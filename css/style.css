@@ -550,6 +550,7 @@ header {
   }
   
   .follow-us-btn {
+    margin-top: 10px;
     display: inline-block;
     padding: 10px 20px;
     background-color: #28a745; /* Green background */
