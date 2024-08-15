@@ -1,2 +1,2 @@
 # Engineering_India_test_upload
-A test uplaod repo for a client website
+A test uplaod repository for a client website
