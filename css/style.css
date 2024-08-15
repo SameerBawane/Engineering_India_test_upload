@@ -544,6 +544,7 @@ header {
 }
 
 .button-container {
+    margin-top: 20px;
     text-align: center; /* Center the button horizontally */
     /* margin-top: 10px; */
   }
