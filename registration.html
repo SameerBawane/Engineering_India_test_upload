@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hackathon Registration</title>
     <link rel="stylesheet" href="css/registration.css">
 </head>
+
 <body>
     <!-- Main Content Section -->
     <main class="main-content">
-        <section class="registration-form" id="registrationForm">
+        <section class="registration-form" id="registrationForm">   
             <h2>Hackathon Registration</h2>
-            <form action="/submit-registration" method="post">
+            <!-- Error Message Section -->
+            <div class="error-message" id="errorMessage"></div>
+
+            <form action="/submit-registration" method="post" autocomplete="off">
                 <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="name" required autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required autocomplete="off">
                     <small>Please enter a 10-digit phone number.</small>
                 </div>
                 <div class="form-group">
                     <label for="team">Team Name</label>
-                    <input type="text" id="team" name="team" required>
+                    <input type="text" id="team" name="team" required autocomplete="off">
                 </div>
                 <div class="form-group">
                     <label for="project">Project Idea (Brief Description)</label>
-                    <textarea id="project" name="project" rows="3" required></textarea>
+                    <textarea id="project" name="project" rows="3" required autocomplete="off"></textarea>
                 </div>
                 <button type="button" class="register-btn" id="registerBtn">Register</button>
             </form>
@@ -45,4 +50,5 @@
 
     <script src="js/registration.js"></script>
 </body>
+
 </html>

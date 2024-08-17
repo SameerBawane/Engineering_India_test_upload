@@ -3,19 +3,46 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url("https://images.unsplash.com/photo-1688413708929-8b2d281803df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    background-size: cover; /* Ensure the image covers the whole body */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Avoid repeating the image */
+    background: none; /* Remove the direct background */
+    position: relative; /* Make the body a positioned element */
     color: #343a40;
+    overflow: hidden; /* Hide any overflow from the animation */
 }
 
-/* Main Content Section */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://wallpaperaccess.com/full/2853774.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    filter: blur(2px); /* Adjust the blur level */
+    z-index: -1; /* Place it behind the content */
+    animation: backgroundMove 30s linear infinite;
+}
+
+/* Keyframes for moving background */
+@keyframes backgroundMove {
+    0% { background-position: center center; }
+    50% { background-position: center top; }
+    100% { background-position: center center; }
+}
+
+/* Main content styling */
 .main-content {
+    position: relative;
+    z-index: 1; /* Ensure content is above the blurred background */
     padding: 40px 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
+
 
 /* Registration Form */
 .registration-form {
@@ -35,10 +62,15 @@ body {
 
 .registration-form h2 {
     text-align: center;
-    color: #000000;
+    color: #25cb2e;
+    background-color: #0b150a;
     font-size: 2em;
     font-weight: 700;
     margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .form-group {
@@ -47,7 +79,7 @@ body {
 
 .form-group label {
     font-weight: bold;
-    color: #343a40;
+    color: #ffffff;
     display: block;
     margin-bottom: 8px;
 }
@@ -62,9 +94,9 @@ body {
 }
 
 .form-group small {
-    color: #6c757d;
+    color: #ffffff;
     display: block;
-    margin-top: 5px;
+    margin-top: 5px;    
 }
 
 /* Register Button */
@@ -136,4 +168,172 @@ body {
         padding: 10px;
         font-size: 0.9em;
     }
+}
+
+
+/* Error Message */
+.error-message {
+    color: #ff0000;
+    background-color: rgba(20, 62, 8, 0.9); /* Semi-transparent background */
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+    display: none; /* Hidden by default */
+}
+
+
+
+
+
+/* Center and style the main content section */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Glass effect for the registration form */
+.registration-form {
+    background: rgba(255, 255, 255, 0.25); /* Lightly tinted background */
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px); /* Stronger blur effect */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Slightly stronger border for a more defined glass look */
+    position: relative; /* To position the overlay */
+    overflow: hidden; /* To contain pseudo-elements */
+    animation: float 5s ease-in-out infinite, glow 1s infinite alternate; /* Floating and glowing animation */
+}
+
+/* Floating and glowing animations */
+@keyframes float {
+    0% {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+    50% {
+        transform: translateY(15px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+    }
+    100% {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 15px rgba(225, 255, 104, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 70px rgba(219, 231, 64, 0.7);
+    }
+}
+
+/* Glass effect overlay */
+.registration-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.25) 100%);
+    border-radius: 20px;
+    z-index: -1;
+}
+
+/* Style form elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #444;
+    position: relative;
+    overflow: hidden;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(20, 62, 8, 0.9); /* Semi-transparent input fields */
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    color: #fff; /* Ensures text is visible */
+}
+
+/* Add this to maintain background color */
+input[type="text"]:not(:placeholder-shown),
+input[type="email"]:not(:placeholder-shown),
+input[type="tel"]:not(:placeholder-shown),
+textarea:not(:placeholder-shown) {
+    background: rgba(20, 62, 8, 0.9); /* Maintain the color */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+    background: rgba(14, 43, 6, 0.9); /* Maintain the color */
+    outline: none;
+    transform: scale(1.02); /* Slightly enlarge on focus */
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    animation: pulse 0.5s infinite; /* Pulsating effect */
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 12px rgba(46, 79, 30, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 9px rgba(102, 193, 56, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 12px rgba(58, 105, 29, 0.5);
+    }
+}
+
+
+/* Style the button */
+button.register-btn {
+    background: linear-gradient(135deg, #228d30, #156e33); /* Gradient background */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Simple hover effect */
+button.register-btn:hover {
+    background: linear-gradient(135deg, #0c1f11, #176c23); /* Slightly different gradient on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+/* Remove any extra pseudo-element effects */
+button.register-btn::before {
+    display: none; /* Remove unnecessary pseudo-element */
+}
+
+button.register-btn:focus {
+    outline: none;
 }
